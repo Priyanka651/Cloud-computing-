@@ -19,7 +19,7 @@ sudo apt install nodejs npm
   * Install ubuntu
 
     
-  ![image alt](https://github.com/Priyanka651/Cloud-computing-/blob/main/Screenshot%202024-10-04%20094517.png?raw=true)
+  ![alt text](https://github.com/Priyanka651/Cloud-computing-/blob/main/Screenshot%202024-10-04%20094517.png?raw=true)
  * Install JDK on Ubuntu 
  sudo apt-get update && sudo apt-get upgrade
 
@@ -29,20 +29,20 @@ sudo apt install nodejs npm
  * Install default JDK
    sudo apt-get install default-jdk
 
-   ![image alt](https://github.com/Priyanka651/Cloud-computing-/blob/main/2.png?raw=true)
+   ![alt text](https://github.com/Priyanka651/Cloud-computing-/blob/main/2.png?raw=true)
    *Set up java path
    Go to Control Panel > System Security > System > Advanced system settings
    set java path by going edit and set environment variables.
    
-   ![image alt](https://github.com/Priyanka651/Cloud-computing-/blob/main/2.png?raw=true)
+   ![alt text](https://github.com/Priyanka651/Cloud-computing-/blob/main/2.png?raw=true)
    and
    
-   ![image alt(https://github.com/Priyanka651/Cloud-computing-/blob/main/4.png?raw=true)
+   ![alt text](https://github.com/Priyanka651/Cloud-computing-/blob/main/4.png?raw=true)
 
    * Linux Configuration
  Update .profile using the given code
 
-![image alt](https://github.com/Priyanka651/Cloud-computing-/blob/main/5.png?raw=true)
+![alt text](https://github.com/Priyanka651/Cloud-computing-/blob/main/5.png?raw=true)
 
 Then run profile.
 .~/.profile
