@@ -17,7 +17,7 @@ sudo apt install nodejs npm
 ##IMPLEMENT
 
   * Install ubuntu 
-  <img width="600" alt="image" src= https://github.com/Priyanka651/Cloud-computing-/blob/main/Screenshot%202024-10-04%20094517.png?raw=true
+  ![image alt](https://github.com/Priyanka651/Cloud-computing-/blob/main/Screenshot%202024-10-04%20094517.png?raw=true)
  * Install JDK on Ubuntu 
  sudo apt-get update && sudo apt-get upgrade
  <img width="600" alt="image" src= https://github.com/Priyanka651/Cloud-computing-/blob/main/1.png?raw=true
