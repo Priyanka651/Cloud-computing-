@@ -20,8 +20,13 @@ sudo apt install nodejs npm
   https://github.com/Priyanka651/Cloud-computing-/blob/main/Screenshot%202024-10-04%20094517.png?raw=true
  * Install JDK on Ubuntu 
  sudo apt-get update && sudo apt-get upgrade
-
+ https://github.com/Priyanka651/Cloud-computing-/blob/main/1.png?raw=true
  * Install default JDK
    sudo apt-get install default-jdk
    https://github.com/Priyanka651/Cloud-computing-/blob/main/2.png?raw=true
+   *set up Java Path.
+   Go to Control Panel > System Security > System > Advanced system settings
+   set java path by going edit and set environment variables.
    
+   
+      
