@@ -31,7 +31,7 @@ sudo apt install nodejs npm
 
    ![alt text](https://github.com/Priyanka651/Cloud-computing-/blob/main/2.png?raw=true)
 
-    *Set up java path
+    * Set up java path
    Go to Control Panel > System Security > System > Advanced system settings
    set java path by going edit and set environment variables.
    
