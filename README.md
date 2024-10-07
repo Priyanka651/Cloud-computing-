@@ -24,11 +24,16 @@ sudo apt install nodejs npm
  * Install default JDK
    sudo apt-get install default-jdk
    https://github.com/Priyanka651/Cloud-computing-/blob/main/2.png?raw=true
-   *set up Java Path.
+   *Set up java path
    Go to Control Panel > System Security > System > Advanced system settings
    set java path by going edit and set environment variables.
    https://github.com/Priyanka651/Cloud-computing-/blob/main/2.png?raw=true
-   
-   
+   and
+   https://github.com/Priyanka651/Cloud-computing-/blob/main/4.png?raw=true
+
+   * Linux Configuration
+ Update .profile using the given code
+
+
    
       
