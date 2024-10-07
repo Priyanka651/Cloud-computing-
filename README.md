@@ -33,6 +33,24 @@ sudo apt install nodejs npm
 
    * Linux Configuration
  Update .profile using the given code
+https://github.com/Priyanka651/Cloud-computing-/blob/main/5.png?raw=true
+Then run profile.
+.~/.profile
+* Update .bashrc using the given code
+* Run .bashrc
+
+  # Prepare Input Data
+*For node.js version 10.x
+$ curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+
+*Install Node.js and npm
+ sudo apt install nodejs
+ sudo apt-get install -y nodejs
+
+Verify that the Node.js and npm were successfully
+$ node --version
+$ npm --version
+
 
 
    
