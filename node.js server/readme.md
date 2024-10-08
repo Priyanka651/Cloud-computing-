@@ -78,6 +78,6 @@ node time_server.js 8000
 
 ********************************************************************************************************************************8
 
- Presentation link   : https://docs.google.com/presentation/d/1rKggRgpB3vHrlBxdUqdeQwxo5tP2Ja28/edit#slide=id.p1
+ Presentation link   : https://github.com/Priyanka651/Cloud-computing-/blob/main/images/ubuntu%20%20(1).pptx
 *****************************************************************************************************************************      
 
