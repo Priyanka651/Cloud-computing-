@@ -66,7 +66,7 @@ $ npm --version
 . Build time_server.js file 
 . create code 
 
-![alt text](https://github.com/Priyanka651/Cloud-computing-/blob/main/Screenshot%202024-10-07%20193513.png?raw=true)
+![alt text](https://github.com/Priyanka651/Cloud-computing-/blob/main/images/Screenshot%202024-10-07%20193513.png?raw=true)
 
 #Run time_server.js in command prompt
 node time_server.js 8000
