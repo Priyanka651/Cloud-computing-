@@ -62,6 +62,12 @@ Verify that the Node.js and npm were successfully
 $ node --version
 $ npm --version
 
+# Prepare code
+. Build time_server.js file 
+. create code 
+
+#complile code in command prompt
+
 
 
    
