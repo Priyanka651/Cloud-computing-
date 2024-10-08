@@ -43,13 +43,13 @@ sudo apt install nodejs npm
    * Linux Configuration
  Update .profile using  given code
 
-![alt text](https://github.com/Priyanka651/Cloud-computing-/blob/main/images/5.png?raw=true)
+![alt text](https://github.com/Priy)
 
 Then run profile.
 .~/.profile
 * Update .bashrc using the given code
 * Run .bashrc
-![alt text](https://github.com/Priyanka651/Cloud-computing-/blob/main/6.png?raw=true)
+![alt text](https://github.com/Priyanka651/Cloud-computing-/blob/main/images/6.png?raw=true)
   # Prepare Input Data
 *For node.js version 10.x
 $ curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
