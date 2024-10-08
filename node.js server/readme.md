@@ -1,5 +1,3 @@
-
-
 ##DESCRIPTION
 This project aims to guide you through setting up a time server on Ubuntu, using JSON to communicate time data over an HTTP API. 
 
@@ -21,37 +19,38 @@ sudo apt install nodejs npm
   * Install ubuntu
 
     
-  ![alt text](https://github.com/Priyanka651/Cloud-computing-/blob/main/Screenshot%202024-10-04%20094517.png?raw=true)
+  ![alt text](https://github.com/Priyanka651/Cloud-computing-/blob/main/images/Screenshot%202024-10-04%20094517.png?raw=true)
  * Install JDK on Ubuntu 
  sudo apt-get update && sudo apt-get upgrade
 
-![Alt text]( https://github.com/Priyanka651/Cloud-computing-/blob/main/1.png?raw=true)
+![Alt text]( https://github.com/Priyanka651/Cloud-computing-/blob/main/images/2.png?raw=true)
 
  
  * Install default JDK
    sudo apt-get install default-jdk
 
-   ![alt text](https://github.com/Priyanka651/Cloud-computing-/blob/main/2.png?raw=true)
+   ![alt text](https://github.com/Priyanka651/Cloud-computing-/blob/main/images/2.png?raw=true)
 
     * Set up java path
    Go to Control Panel > System Security > System > Advanced system settings
    set java path by going edit and set environment variables.
    
-   ![alt text](https://github.com/Priyanka651/Cloud-computing-/blob/main/2.png?raw=true)
+   ![alt text](https://github.com/Priyanka651/Cloud-computing-/blob/main/images/3.png?raw=true)
    
    
-   ![alt text](https://github.com/Priyanka651/Cloud-computing-/blob/main/4.png?raw=true)
+   ![alt text](https://github.com/Priyanka651/Cloud-computing-/blob/main/images/4.png?raw=true)
 
    * Linux Configuration
- Update .profile using the given code
-
-![alt text](https://github.com/Priyanka651/Cloud-computing-/blob/main/5.png?raw=true)
-
-Then run profile.
+ Update .profile by using  given code
+then run profile  in command prompt by using
 .~/.profile
+
+![alt text](https://github.com/Priyanka651/Cloud-computing-/blob/main/images/5.png?raw=true)
+
+
 * Update .bashrc using the given code
 * Run .bashrc
-![alt text](https://github.com/Priyanka651/Cloud-computing-/blob/main/6.png?raw=true)
+![alt text](https://github.com/Priyanka651/Cloud-computing-/blob/main/images/6.png?raw=true)
   # Prepare Input Data
 *For node.js version 10.x
 $ curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
@@ -68,14 +67,14 @@ $ npm --version
 . Build time_server.js file 
 . create code 
 
-![alt text](https://github.com/Priyanka651/Cloud-computing-/blob/main/Screenshot%202024-10-07%20193513.png?raw=true)
+![alt text](https://github.com/Priyanka651/Cloud-computing-/blob/main/images/Screenshot%202024-10-07%20193513.png?raw=true)
 
 #Run time_server.js in command prompt
 node time_server.js 8000
 
  #Result
-![alt text](https://github.com/Priyanka651/Cloud-computing-/blob/main/7.png?raw=true)
- 
+![alt text](https://github.com/Priyanka651/Cloud-computing-/blob/main/images/7.png?raw=true)
+  
 
 ********************************************************************************************************************************8
 
