@@ -41,12 +41,13 @@ sudo apt install nodejs npm
    ![alt text](https://github.com/Priyanka651/Cloud-computing-/blob/main/images/4.png?raw=true)
 
    * Linux Configuration
- Update .profile using  given code
+ Update .profile by using  any given code
+then run profile  in command prompt by using
+.~/.profile
 
 ![alt text](https://github.com/Priyanka651/Cloud-computing-/blob/main/images/5.png?raw=true)
 
-Then run profile.
-.~/.profile
+
 * Update .bashrc using the given code
 * Run .bashrc
 ![alt text](https://github.com/Priyanka651/Cloud-computing-/blob/main/images/6.png?raw=true)
