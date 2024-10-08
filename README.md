@@ -23,7 +23,7 @@ sudo apt install nodejs npm
  * Install JDK on Ubuntu 
  sudo apt-get update && sudo apt-get upgrade
 
-![Alt text]( https://github.com/Priyanka651/Cloud-computing-/blob/main/1.png?raw=true)
+![Alt text]( https://github.com/Priyanka651/Cloud-computing-/blob/main/images/2.png?raw=true)
 
  
  * Install default JDK
