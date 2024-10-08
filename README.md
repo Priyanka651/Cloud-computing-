@@ -72,7 +72,7 @@ $ npm --version
 node time_server.js 8000
 
  #Result
- 
+![alt text](https://github.com/Priyanka651/Cloud-computing-/blob/main/7.png?raw=true)
  
 
 
