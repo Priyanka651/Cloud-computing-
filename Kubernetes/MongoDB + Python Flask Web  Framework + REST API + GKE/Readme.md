@@ -342,7 +342,6 @@ To configure your Flask app with the correct MongoDB connection details, create 
 
 Create a file named `app-config.yaml` to define the environment variables for your application:
 
-```yaml
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -353,7 +352,7 @@ data:
 ```
     ```bash
     kubectl apply -f app-config.yaml
-    ```
+  
 
  ## Ingress Setup
 
