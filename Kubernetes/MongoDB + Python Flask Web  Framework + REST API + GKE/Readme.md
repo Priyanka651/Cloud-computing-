@@ -20,60 +20,61 @@ Wait for the cluster creation to finish.
 gcloud compute disks create --size=10GiB --zone=us-west1-a mongodb
 
 **3.Deploy MongoDB: Apply the mongodb-deployment.yaml configuration:**
-     Apply the `mongodb-deployment.yaml` configuration:
-    ```yaml
-    apiVersion: v1
-    kind: PersistentVolume
+     ## Deploy MongoDB on Kubernetes
+
+To deploy MongoDB on Kubernetes, apply the `mongodb-deployment.yaml` configuration:
+
+```yaml
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mongodb-pv
+spec:
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  gcePersistentDisk:
+    pdName: mongodb
+    fsType: ext4
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mongodb-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongodb-deployment
+spec:
+  selector:
+    matchLabels:
+      app: mongodb
+  strategy:
+    type: Recreate
+  template:
     metadata:
-      name: mongodb-pv
+      labels:
+        app: mongodb
     spec:
-      capacity:
-        storage: 10Gi
-      accessModes:
-        - ReadWriteOnce
-      gcePersistentDisk:
-        pdName: mongodb
-        fsType: ext4
-    ---
-    apiVersion: v1
-    kind: PersistentVolumeClaim
-    metadata:
-      name: mongodb-pvc
-    spec:
-      accessModes:
-        - ReadWriteOnce
-      resources:
-        requests:
-          storage: 10Gi
-    ---
-    apiVersion: apps/v1
-    kind: Deployment
-    metadata:
-      name: mongodb-deployment
-    spec:
-      selector:
-        matchLabels:
-          app: mongodb
-      strategy:
-        type: Recreate
-      template:
-        metadata:
-          labels:
-            app: mongodb
-        spec:
-          containers:
-          - image: mongo
-            name: mongo
-            ports:
-            - containerPort: 27017
-            volumeMounts:
-            - name: mongodb-data
-              mountPath: /data/db
-          volumes:
-          - name: mongodb-data
-            persistentVolumeClaim:
-              claimName: mongodb-pvc
-    ```
-    ```bash
-    kubectl apply -f mongodb-deployment.yaml
-    ```
+      containers:
+      - image: mongo
+        name: mongo
+        ports:
+        - containerPort: 27017
+        volumeMounts:
+        - name: mongodb-data
+          mountPath: /data/db
+      volumes:
+      - name: mongodb-data
+        persistentVolumeClaim:
+          claimName: mongodb-pvc
+
+kubectl apply -f mongodb-deployment.yaml
