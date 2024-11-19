@@ -487,7 +487,7 @@ kubectl get ingress
   
 3. **Test Flask Application:**
    ```
-curl http://<INGRESS-IP>/books
+    curl http://<INGRESS-IP>/books
 
 5. **Add a New Book:**
     ```
