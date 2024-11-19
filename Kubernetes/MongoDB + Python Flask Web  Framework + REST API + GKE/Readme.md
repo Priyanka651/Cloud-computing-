@@ -140,8 +140,97 @@ async function run() {
 
 run().catch(console.dir);
 
-## StudentServer Setup
 ### Step 2: Modify StudentServer to Fetch Records from MongoDB and Deploy to GKE
+
+#### 1. Create `studentServer.js`:
+
+```javascript
+const http = require('http');
+const url = require('url');
+const { MongoClient } = require('mongodb');
+const { MONGO_URL, MONGO_DATABASE } = process.env;
+
+const uri = `mongodb://${MONGO_URL}/${MONGO_DATABASE}`;
+console.log(uri);
+
+const server = http.createServer(async (req, res) => {
+  try {
+    const parsedUrl = url.parse(req.url, true);
+    const student_id = parseInt(parsedUrl.query.student_id);
+
+    if (/^\/api\/score/.test(req.url)) {
+      const client = new MongoClient(uri);
+      await client.connect();
+      const db = client.db("studentdb");
+
+      const student = await db.collection("students").findOne({ "student_id": student_id });
+      await client.close();
+
+      if (student) {
+        const response = {
+          student_id: student.student_id,
+          student_name: student.student_name,
+          student_score: student.grade
+        };
+
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify(response) + '\n');
+      } else {
+        res.writeHead(404);
+        res.end("Student Not Found\n");
+      }
+    } else {
+      res.writeHead(404);
+      res.end("Wrong URL, please try again\n");
+    }
+  } catch (err) {
+    console.error(err);
+    res.writeHead(500);
+    res.end("Internal Server Error\n");
+  }
+});
+
+server.listen(8080, () => {
+  console.log('Server is listening on port 8080');
+});
+
+
+2. **Create `Dockerfile`:**
+FROM node:14
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+COPY studentServer.js ./
+EXPOSE 8080
+ENTRYPOINT ["node", "studentServer.js"]
+
+3. **Create `package.json`:**
+{
+  "name": "studentserver",
+  "version": "1.0.0",
+  "description": "Student Server",
+  "main": "studentServer.js",
+  "scripts": {
+    "start": "node studentServer.js"
+  },
+  "dependencies": {
+    "mongodb": "^4.0.0",
+    "http": "0.0.1-security"
+  }
+}
+
+
+### Step 4: Build Docker Image
+
+To build the Docker image for your `studentserver`, run the following command:
+
+```bash
+docker build -t yourdockerhubID/studentserver .
+
+5. **Push Docker Image to Docker Hub:**
+docker push yourdockerhubID/studentserver
+
+
 
     
 
