@@ -90,35 +90,47 @@ spec:
 
  Ensure the pod status is `Running`.
 
-5. **Create MongoDB Service:**
-    Apply the `mongodb-service.yaml` configuration:
+5. ### Step: Create MongoDB Service
 
+To expose your MongoDB deployment, apply the `mongodb-service.yaml` configuration with the following content:
 
-    apiVersion: v1
-   kind: Service
-   metadata:
-   name: mongodb-service
-   spec:
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongodb-service
+spec:
   type: LoadBalancer
   ports:
   - port: 27017
     targetPort: 27017
   selector:
     app: mongodb
-    
-
-6. **Verify Service Status:**
-    kubectl get svc
-Wait for the `EXTERNAL-IP` to be assigned.
 
 
-8. **Test MongoDB Connection:**
- kubectl exec -it mongodb-deployment-replace-with-your-pod-name -- bash
+### Step 6: Verify Service Status
+
+To check the status of the MongoDB service, run the following command:
+
+```bash
+kubectl get svc
 
 
-8.**Insert Records into MongoDB:**
+### Step 8: Test MongoDB Connection
 
-    const { MongoClient } = require('mongodb');
+To connect to the MongoDB pod and run commands inside it, use the following command:
+
+```bash
+kubectl exec -it mongodb-deployment-replace-with-your-pod-name -- bash
+
+
+
+### Step 8: Insert Records into MongoDB
+
+Use the following Node.js script to insert data into MongoDB. Replace `<EXTERNAL-IP>` with the actual external IP of your MongoDB service.
+
+```javascript
+const { MongoClient } = require('mongodb');
 
 async function run() {
   const url = "mongodb://<EXTERNAL-IP>/studentdb"; // Use the correct IP and port
@@ -147,9 +159,10 @@ async function run() {
 
 run().catch(console.dir);
 
-## Step 2: Modify StudentServer to Fetch Records from MongoDB and Deploy to GKE ##
 
-**1. Create `studentServer.js`:**
+## Step 2: Modify StudentServer to Fetch Records from MongoDB and Deploy to GKE
+
+### 1. Create `studentServer.js`:
 
 ```javascript
 const http = require('http');
@@ -190,16 +203,7 @@ const server = http.createServer(async (req, res) => {
       res.writeHead(404);
       res.end("Wrong URL, please try again\n");
     }
-  } catch (err) {
-    console.error(err);
-    res.writeHead(500);
-    res.end("Internal Server Error\n");
-  }
-});
-
-server.listen(8080, () => {
-  console.log('Server is listening on port 8080');
-});
+  } 
 
 
 2. **Create `Dockerfile`:**
@@ -210,6 +214,7 @@ RUN npm install
 COPY studentServer.js ./
 EXPOSE 8080
 ENTRYPOINT ["node", "studentServer.js"]
+
 
 3. **Create `package.json`:**
 {
