@@ -101,7 +101,6 @@ spec:
     app: mongodb.
 
 ```
-    ```bash
     kubectl apply -f mongodb-service.yaml
     ```
 
