@@ -437,7 +437,7 @@ spec:
 
 3. ## Create Ingress Resource##
 
-### 1. **Create `ingress.yaml`**
+ 1. **Create `ingress.yaml`**
 
 To expose both the `studentserver` and `bookshelf` services via an ingress, create a file named `ingress.yaml` with the following content:
 
@@ -468,9 +468,9 @@ spec:
               number: 80
 
  ```
-    ```bash
+   
     kubectl apply -f ingress.yaml
-    ``` 
+
   ## Testing the Applications
 
 ### Step 6: Test the Applications
