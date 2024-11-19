@@ -22,33 +22,60 @@ gcloud compute disks create --size=10GiB --zone=us-west1-a mongodb
 **3.Deploy MongoDB: Apply the mongodb-deployment.yaml configuration:**
 
 
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: mongodb-deployment
-spec:
-  selector:
-    matchLabels:
-      app: mongodb
-  strategy:
-    type: Recreate
-  template:
+Apply the `mongodb-deployment.yaml` configuration:
+    ```yaml
+    apiVersion: v1
+    kind: PersistentVolume
     metadata:
-      labels:
-        app: mongodb
+      name: mongodb-pv
     spec:
-      containers:
-      - image: mongo
-        name: mongo
-        ports:
-        - containerPort: 27017
-        volumeMounts:
-        - name: mongodb-data
-          mountPath: /data/db
-      volumes:
-      - name: mongodb-data
-        persistentVolumeClaim:
-          claimName: mongodb-pvc
-
- kubectl apply -f mongodb-deployment.yaml         
-
+      capacity:
+        storage: 10Gi
+      accessModes:
+        - ReadWriteOnce
+      gcePersistentDisk:
+        pdName: mongodb
+        fsType: ext4
+    ---
+    apiVersion: v1
+    kind: PersistentVolumeClaim
+    metadata:
+      name: mongodb-pvc
+    spec:
+      accessModes:
+        - ReadWriteOnce
+      resources:
+        requests:
+          storage: 10Gi
+    ---
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: mongodb-deployment
+    spec:
+      selector:
+        matchLabels:
+          app: mongodb
+      strategy:
+        type: Recreate
+      template:
+        metadata:
+          labels:
+            app: mongodb
+        spec:
+          containers:
+          - image: mongo
+            name: mongo
+            ports:
+            - containerPort: 27017
+            volumeMounts:
+            - name: mongodb-data
+              mountPath: /data/db
+          volumes:
+          - name: mongodb-data
+            persistentVolumeClaim:
+              claimName: mongodb-pvc
+    ```
+    ```bash
+    kubectl apply -f mongodb-deployment.yaml
+    ```
