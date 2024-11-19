@@ -1,1 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: studentserver
+  labels:
+    app: studentserver-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: studentserver
+  template:
+    metadata:
+      labels:
+        app: studentserver
+    spec:
+      containers:
+      - image: pari440/studentserver
+        name: studentserver
+        ports:
+        - containerPort: 8080
+        env:
+        - name: MONGO_URL
+          valueFrom:
+            configMapKeyRef:
+              name: studentserver-config
+              key: MONGO_URL
+        - name: MONGO_DATABASE
+          valueFrom:
+            configMapKeyRef:
+              name: studentserver-config
+              key: MONGO_DATABASE
 
