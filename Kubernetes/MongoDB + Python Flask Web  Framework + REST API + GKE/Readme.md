@@ -95,10 +95,10 @@ spec:
 
 
     apiVersion: v1
-kind: Service
-metadata:
-  name: mongodb-service
-spec:
+   kind: Service
+   metadata:
+   name: mongodb-service
+   spec:
   type: LoadBalancer
   ports:
   - port: 27017
