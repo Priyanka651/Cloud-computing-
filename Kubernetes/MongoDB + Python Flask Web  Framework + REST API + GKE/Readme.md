@@ -494,6 +494,9 @@ kubectl get ingress
     curl -X POST http://<INGRESS-IP>/book -H "Content-Type: application/json" -d '{"book_name": "New Book", "book_author": "Author Name", "isbn": "123456"}'
 
 
+## Appendix:##
+
+-- [Detialed Slides Presentation](https://docs.google.com/presentation/d/1F8exNjg8f8dNeFSB1An4U6DRGY58vU1CL8pu_fk9Rzw/edit#slide=id.g1f87997393_0_782)
 
 
 
