@@ -357,6 +357,7 @@ data:
  ## Ingress Setup
 
 ### Step 5: Create and Configure the Ingress
+**Create studentserver-deployment.yaml:**
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
