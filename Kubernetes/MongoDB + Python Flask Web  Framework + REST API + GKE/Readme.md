@@ -75,7 +75,6 @@ spec:
           claimName: mongodb-pvc
 
 ```
-    ```bash
     kubectl apply -f mongodb-deployment.yaml
 
 4. **Check Deployment Status:**
