@@ -78,3 +78,73 @@ spec:
           claimName: mongodb-pvc
 
 kubectl apply -f mongodb-deployment.yaml
+
+4. **Check Deployment Status:**
+     ```bash
+    kubectl get pods
+       ```
+    Ensure the pod status is `Running`.
+
+5. **Create MongoDB Service:**
+     Apply the `mongodb-service.yaml` configuration:
+    ```yaml
+    apiVersion: v1
+    kind: Service
+    metadata:
+      name: mongodb-service
+    spec:
+      type: LoadBalancer
+      ports:
+      - port: 27017
+        targetPort: 27017
+      selector:
+        app: mongodb
+    ```
+    ```bash
+    kubectl apply -f mongodb-service.yaml
+    ```
+6. **Verify Service Status:**
+    ```bash
+    kubectl get svc
+    ```
+    Wait for the `EXTERNAL-IP` to be assigned.
+
+7. **Test MongoDB Connection:**
+    ```bash
+    kubectl exec -it mongodb-deployment-replace-with-your-pod-name -- bash
+    ```
+8.**Insert Records into MongoDB:**
+    Use the following Node.js script to insert data into MongoDB:
+    ```javascript
+    const { MongoClient } = require('mongodb');
+
+    async function run() {
+      const url = "mongodb://<EXTERNAL-IP>/studentdb"; // Use the correct IP and port
+      const client = new MongoClient(url, { useNewUrlParser: true, useUnifiedTopology: true });
+
+      try {
+        await client.connect();
+        const db = client.db("studentdb");
+        const collection = db.collection("students");
+
+        const docs = [
+          { student_id: 11111, student_name: "Bruce Lee", grade: 84 },
+          { student_id: 22222, student_name: "Jackie Chan", grade: 93 },
+          { student_id: 33333, student_name: "Jet Li", grade: 88 }
+        ];
+
+        const insertResult = await collection.insertMany(docs);
+        console.log(`${insertResult.insertedCount} documents were inserted`);
+
+        const result = await collection.findOne({ student_id: 11111 });
+        console.log(result);
+      } finally {
+        await client.close();
+      }
+    }
+    run().catch(console.dir);
+    ```
+
+## StudentServer Setup
+
+### Step 2: Modify StudentServer to Fetch Records from MongoDB and Deploy to GKE
