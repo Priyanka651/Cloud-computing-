@@ -85,12 +85,15 @@ spec:
 
 4. **Check Deployment Status:**
     ```bash
+
     kubectl get pods
 
  Ensure the pod status is `Running`.
 
 5. **Create MongoDB Service:**
     Apply the `mongodb-service.yaml` configuration:
+
+
     apiVersion: v1
 kind: Service
 metadata:
@@ -102,15 +105,19 @@ spec:
     targetPort: 27017
   selector:
     app: mongodb
+    
 
 6. **Verify Service Status:**
     kubectl get svc
 Wait for the `EXTERNAL-IP` to be assigned.
 
-7. **Test MongoDB Connection:**
+
+8. **Test MongoDB Connection:**
  kubectl exec -it mongodb-deployment-replace-with-your-pod-name -- bash
 
+
 8.**Insert Records into MongoDB:**
+
     const { MongoClient } = require('mongodb');
 
 async function run() {
@@ -140,9 +147,9 @@ async function run() {
 
 run().catch(console.dir);
 
-### Step 2: Modify StudentServer to Fetch Records from MongoDB and Deploy to GKE
+## Step 2: Modify StudentServer to Fetch Records from MongoDB and Deploy to GKE ##
 
-#### 1. Create `studentServer.js`:
+**1. Create `studentServer.js`:**
 
 ```javascript
 const http = require('http');
@@ -220,7 +227,7 @@ ENTRYPOINT ["node", "studentServer.js"]
 }
 
 
-### Step 4: Build Docker Image
+## Step 4: Build Docker Image ##
 
 To build the Docker image for your `studentserver`, run the following command:
 
