@@ -19,13 +19,8 @@ Wait for the cluster creation to finish.
 
 gcloud compute disks create --size=10GiB --zone=us-west1-a mongodb
 
-**3.Deploy MongoDB: Apply the mongodb-deployment.yaml configuration:**
-     # MongoDB Deployment on Kubernetes
-
-## 1. Deploy MongoDB on Kubernetes
-
-Create the `mongodb-deployment.yaml` configuration with the following content:
-
+**3.Deploy MongoDB: 
+Apply the mongodb-deployment.yaml configuration:**
 ```yaml
 apiVersion: v1
 kind: PersistentVolume
@@ -84,15 +79,14 @@ spec:
     kubectl apply -f mongodb-deployment.yaml
 
 4. **Check Deployment Status:**
-    ```bash
-
     kubectl get pods
 
  Ensure the pod status is `Running`.
 
-5. ### Step: Create MongoDB Service
+ 5.**Create MongoDB Service**
 
-To expose your MongoDB deployment, apply the `mongodb-service.yaml` configuration with the following content:
+To expose your MongoDB deployment,
+Apply the `mongodb-service.yaml` configuration with the following content:
 
 ```yaml
 apiVersion: v1
@@ -105,27 +99,31 @@ spec:
   - port: 27017
     targetPort: 27017
   selector:
-    app: mongodb
+    app: mongodb.
 
+```
+    ```bash
+    kubectl apply -f mongodb-service.yaml
+    ```
 
-### Step 6: Verify Service Status
+ 6.**Verify Service Status**
 
 To check the status of the MongoDB service, run the following command:
 
 ```bash
 kubectl get svc
+```
+    Wait for the `EXTERNAL-IP` to be assigned.
 
-
-### Step 8: Test MongoDB Connection
+ 7. **Test MongoDB Connection**
 
 To connect to the MongoDB pod and run commands inside it, use the following command:
 
 ```bash
 kubectl exec -it mongodb-deployment-replace-with-your-pod-name -- bash
+ ```
 
-
-
-### Step 8: Insert Records into MongoDB
+8.**Insert Records into MongoDB**
 
 Use the following Node.js script to insert data into MongoDB. Replace `<EXTERNAL-IP>` with the actual external IP of your MongoDB service.
 
