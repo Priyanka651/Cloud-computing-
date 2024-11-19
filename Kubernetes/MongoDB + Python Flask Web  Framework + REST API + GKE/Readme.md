@@ -350,7 +350,7 @@ data:
   MONGO_URL: "mongodb-service:27017"
   MONGO_DATABASE: "studentdb"
 ```
-    ```bash
+   
     kubectl apply -f app-config.yaml
   
 ```
@@ -392,11 +392,8 @@ spec:
       port: 80
       targetPort: 8080
 ```
-    ```bash
+ 
     kubectl apply -f studentserver-deployment.yaml
-    ```
-
-
 
 2. **Create `bookshelf-deployment.yaml`**
 
