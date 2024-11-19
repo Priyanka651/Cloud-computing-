@@ -20,9 +20,7 @@ Wait for the cluster creation to finish.
 gcloud compute disks create --size=10GiB --zone=us-west1-a mongodb
 
 **3.Deploy MongoDB: Apply the mongodb-deployment.yaml configuration:**
-
-
-Apply the `mongodb-deployment.yaml` configuration:
+     Apply the `mongodb-deployment.yaml` configuration:
     ```yaml
     apiVersion: v1
     kind: PersistentVolume
