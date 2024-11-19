@@ -78,11 +78,11 @@ spec:
           claimName: mongodb-pvc
 
 
-kubectl apply -f mongodb-deployment.yaml
+**kubectl apply -f mongodb-deployment.yaml**
 
 
 4. **Check Deployment Status:**
-     ```bash
+     
     kubectl get pods
        ```
 
