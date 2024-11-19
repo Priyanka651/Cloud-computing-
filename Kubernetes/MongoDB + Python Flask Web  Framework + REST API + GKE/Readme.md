@@ -436,8 +436,8 @@ spec:
       targetPort: 5000
 ```
 
-3. ## Create Ingress Resource ##
- 1. **Create `ingress.yaml`**
+
+ 3. **Create `ingress.yaml`**
 
 To expose both the `studentserver` and `bookshelf` services via an ingress, create a file named `ingress.yaml` with the following content:
 
