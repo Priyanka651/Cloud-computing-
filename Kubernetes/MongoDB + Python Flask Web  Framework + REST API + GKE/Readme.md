@@ -241,9 +241,113 @@ docker build -t yourdockerhubID/studentserver .
  ```
 
 5. **Push Docker Image to Docker Hub:**
+   
    ```bash
 docker push yourdockerhubID/studentserver
+
+
+## Flask Application Setup ##
+
+## Step 3: Create the Flask Application ##
+
+1. **Create `bookshelf.py`:**
+   ### Step: Create Flask App to Manage Bookshelf
 ```
+python
+from flask import Flask, request, jsonify
+from flask_pymongo import PyMongo
+from bson.objectid import ObjectId
+import socket
+import os
+
+app = Flask(__name__)
+app.config["MONGO_URI"] = "mongodb://" + os.getenv("MONGO_URL") + "/" + os.getenv("MONGO_DATABASE")
+app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
+mongo = PyMongo(app)
+db = mongo.db
+
+@app.route("/")
+def index():
+    hostname = socket.gethostname()
+    return jsonify(message="Welcome to bookshelf app! I am running inside {} pod!".format(hostname))
+
+@app.route("/books")
+def get_all_books():
+    books = db.bookshelf.find()
+    data = []
+    for book in books:
+        data.append({
+            "id": str(book["_id"]),
+            "Book Name": book["book_name"],
+            "Book Author": book["book_author"],
+            "ISBN": book["ISBN"]
+        })
+    return jsonify(data)
+
+@app.route("/book", methods=["POST"])
+def add_book():
+    book = request.get_json(force=True)
+    db.bookshelf.insert_one({
+        "book_name": book["book_name"],
+        "book_author": book["book_author"],
+        "ISBN": book["isbn"]
+    })
+    return jsonify(message="Book saved successfully!")
+
+@app.route("/book/<id>", methods=["PUT"])
+def update_book(id):
+    data = request.get_json(force=True)
+    response = db.bookshelf.update_one({"_id": ObjectId(id)}, {"$set": {
+        "book_name": data['book_name'],
+        "book_author": data["book_author"],
+        "ISBN": data["isbn"]
+    }})
+    message = "Book Updated Successfully!" if response else "Nothing to Update!"
+    return jsonify(message=message)
+
+@app.route("/book/<id>", methods=["DELETE"])
+def delete_book(id):
+    response = db.bookshelf.delete_one({"_id": ObjectId(id)})
+    message = "Book Deleted Successfully!" if response else "Book Not Available!"
+    return jsonify(message=message)
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000, debug=True)
+```
+3. **Create `Dockerfile`:**
+    ```Dockerfile
+    FROM python:3.8-slim
+
+# Set the working directory inside the container
+WORKDIR /app
+
+# Install dependencies
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the Flask app into the container
+COPY app.py ./
+
+# Expose port 5000
+EXPOSE 5000
+
+# Command to run the Flask app
+CMD ["python", "app.py"]
+
+
+4. **Build Docker Image:**
+   ```bash
+   docker build -t bookshelf-app .
+
+5. **Push Docker Image to Docker Hub:**
+    ```bash
+    docker push yourdockerhubID/bookshelf
+ ```
+
+
+
+
+
 
 
     
