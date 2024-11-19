@@ -102,7 +102,7 @@ spec:
 
 ```
     kubectl apply -f mongodb-service.yaml
-    ```
+  
 
  6.**Verify Service Status**
 
