@@ -204,6 +204,7 @@ const server = http.createServer(async (req, res) => {
 ```
 
 2. **Create `Dockerfile`:**
+ ```Dockerfile
 FROM node:14
 WORKDIR /app
 COPY package*.json ./
@@ -211,9 +212,10 @@ RUN npm install
 COPY studentServer.js ./
 EXPOSE 8080
 ENTRYPOINT ["node", "studentServer.js"]
-
+```
 
 3. **Create `package.json`:**
+ ```json
 {
   "name": "studentserver",
   "version": "1.0.0",
@@ -230,16 +232,18 @@ ENTRYPOINT ["node", "studentServer.js"]
 
 ```
 
-## Step 4: Build Docker Image ##
+ 4.  **Build Docker Image**
 
 To build the Docker image for your `studentserver`, run the following command:
 
 ```bash
 docker build -t yourdockerhubID/studentserver .
+ ```
 
 5. **Push Docker Image to Docker Hub:**
+   ```bash
 docker push yourdockerhubID/studentserver
-
+```
 
 
     
