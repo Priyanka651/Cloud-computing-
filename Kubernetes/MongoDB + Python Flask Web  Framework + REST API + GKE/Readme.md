@@ -241,8 +241,6 @@ docker build -t yourdockerhubID/studentserver .
  ```
 
 5. **Push Docker Image to Docker Hub:**
-   
-   ```bash
 docker push yourdockerhubID/studentserver.
 
 
