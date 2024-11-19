@@ -317,22 +317,12 @@ if __name__ == "__main__":
 3. **Create `Dockerfile`:**
     ```Dockerfile
     FROM python:3.8-slim
-
-# Set the working directory inside the container
-WORKDIR /app
-
-# Install dependencies
-COPY requirements.txt ./
-RUN pip install --no-cache-dir -r requirements.txt
-
-# Copy the Flask app into the container
-COPY app.py ./
-
-# Expose port 5000
-EXPOSE 5000
-
-# Command to run the Flask app
-CMD ["python", "app.py"]
+    WORKDIR /app
+    COPY requirements.txt ./
+    RUN pip install --no-cache-dir -r requirements.txt
+    COPY app.py ./
+    EXPOSE 5000
+    CMD ["python", "app.py"]
 
 
 4. **Build Docker Image:**
