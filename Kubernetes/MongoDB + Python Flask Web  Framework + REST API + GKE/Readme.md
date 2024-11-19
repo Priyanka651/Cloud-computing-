@@ -353,7 +353,7 @@ data:
     ```bash
     kubectl apply -f app-config.yaml
   
-
+```
  ## Ingress Setup
 
 ### Step 5: Create and Configure the Ingress
