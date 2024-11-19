@@ -243,7 +243,8 @@ docker build -t yourdockerhubID/studentserver .
 5. **Push Docker Image to Docker Hub:**
    
    ```bash
-docker push yourdockerhubID/studentserver
+docker push yourdockerhubID/studentserver.
+
 
 
 ## Flask Application Setup ##
@@ -314,7 +315,7 @@ def delete_book(id):
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)
 ```
-3. **Create `Dockerfile`:**
+2. **Create `Dockerfile`:**
     ```Dockerfile
     FROM python:3.8-slim
     WORKDIR /app
@@ -325,11 +326,11 @@ if __name__ == "__main__":
     CMD ["python", "app.py"]
 
 
-4. **Build Docker Image:**
+3. **Build Docker Image:**
    ```bash
    docker build -t bookshelf-app .
 
-5. **Push Docker Image to Docker Hub:**
+4. **Push Docker Image to Docker Hub:**
     ```bash
     docker push yourdockerhubID/bookshelf
  
