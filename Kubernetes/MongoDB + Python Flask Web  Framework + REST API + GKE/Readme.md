@@ -79,11 +79,13 @@ spec:
 
 kubectl apply -f mongodb-deployment.yaml
 
+
 4. **Check Deployment Status:**
      ```bash
     kubectl get pods
        ```
     Ensure the pod status is `Running`.
+
 
 5. **Create MongoDB Service:**
      Apply the `mongodb-service.yaml` configuration:
@@ -103,16 +105,20 @@ kubectl apply -f mongodb-deployment.yaml
     ```bash
     kubectl apply -f mongodb-service.yaml
     ```
+
 6. **Verify Service Status:**
     ```bash
     kubectl get svc
     ```
     Wait for the `EXTERNAL-IP` to be assigned.
 
+
 7. **Test MongoDB Connection:**
     ```bash
     kubectl exec -it mongodb-deployment-replace-with-your-pod-name -- bash
     ```
+
+
 8.**Insert Records into MongoDB:**
     Use the following Node.js script to insert data into MongoDB:
     ```javascript
@@ -145,6 +151,7 @@ kubectl apply -f mongodb-deployment.yaml
     run().catch(console.dir);
     ```
 
-## StudentServer Setup
+
+## StudentServer Setup ##
 
 ### Step 2: Modify StudentServer to Fetch Records from MongoDB and Deploy to GKE
