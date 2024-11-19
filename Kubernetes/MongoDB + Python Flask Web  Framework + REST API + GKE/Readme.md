@@ -332,8 +332,172 @@ if __name__ == "__main__":
 5. **Push Docker Image to Docker Hub:**
     ```bash
     docker push yourdockerhubID/bookshelf
- ```
+ 
+## ConfigMap Creation ##
 
+### Step 4: Create a ConfigMap for Environment Variables
+
+To configure your Flask app with the correct MongoDB connection details, create a ConfigMap for environment variables.
+
+#### 1. **Create `app-config.yaml`**
+
+Create a file named `app-config.yaml` to define the environment variables for your application:
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+data:
+  MONGO_URL: "mongodb-service:27017"
+  MONGO_DATABASE: "studentdb"
+```
+    ```bash
+    kubectl apply -f app-config.yaml
+    ```
+
+ ## Ingress Setup
+
+### Step 5: Create and Configure the Ingress
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: studentserver
+spec:
+  selector:
+    matchLabels:
+      app: studentserver
+  template:
+    metadata:
+      labels:
+        app: studentserver
+    spec:
+      containers:
+      - name: studentserver
+        image: yourdockerhubID/studentserver
+        ports:
+        - containerPort: 8080
+        envFrom:
+        - configMapRef:
+            name: app-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: studentserver-service
+spec:
+  selector:
+    app: studentserver
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+```
+    ```bash
+    kubectl apply -f studentserver-deployment.yaml
+    ```
+
+
+
+2. **Create `bookshelf-deployment.yaml`**
+
+To deploy the Bookshelf application, create a file named `bookshelf-deployment.yaml` with the following contents:
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bookshelf
+spec:
+  selector:
+    matchLabels:
+      app: bookshelf
+  template:
+    metadata:
+      labels:
+        app: bookshelf
+    spec:
+      containers:
+      - name: bookshelf
+        image: yourdockerhubID/bookshelf
+        ports:
+        - containerPort: 5000
+        envFrom:
+        - configMapRef:
+            name: app-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: bookshelf-service
+spec:
+  selector:
+    app: bookshelf
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5000
+```
+
+3. ## Create Ingress Resource##
+
+### 1. **Create `ingress.yaml`**
+
+To expose both the `studentserver` and `bookshelf` services via an ingress, create a file named `ingress.yaml` with the following content:
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /student
+        pathType: Prefix
+        backend:
+          service:
+            name: studentserver-service
+            port:
+              number: 80
+      - path: /books
+        pathType: Prefix
+        backend:
+          service:
+            name: bookshelf-service
+            port:
+              number: 80
+
+ ```
+    ```bash
+    kubectl apply -f ingress.yaml
+    ``` 
+  ## Testing the Applications
+
+### Step 6: Test the Applications
+### 1. **Verify the Ingress IP**
+
+To verify the assigned IP address for your ingress, run the following command:
+
+```bash
+kubectl get ingress
+ ```
+2. **Test StudentServer:**
+    ```
+    curl http://<INGRESS-IP>/student/api/score?student_id=11111
+  ```
+3. **Test Flask Application:**
+    ```
+curl http://<INGRESS-IP>/books
+```
+4. **Add a New Book:**
+    ```bash
+    curl -X POST http://<INGRESS-IP>/book -H "Content-Type: application/json" -d '{"book_name": "New Book", "book_author": "Author Name", "isbn": "123456"}'
+```
 
 
 
