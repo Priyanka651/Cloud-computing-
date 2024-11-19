@@ -77,6 +77,7 @@ spec:
         persistentVolumeClaim:
           claimName: mongodb-pvc
 
+
 kubectl apply -f mongodb-deployment.yaml
 
 
@@ -84,7 +85,8 @@ kubectl apply -f mongodb-deployment.yaml
      ```bash
     kubectl get pods
        ```
-    Ensure the pod status is `Running`.
+
+ Ensure the pod status is `Running`.
 
 
 5. **Create MongoDB Service:**
@@ -102,7 +104,8 @@ kubectl apply -f mongodb-deployment.yaml
       selector:
         app: mongodb
     ```
-    ```bash
+
+ ```bash
     kubectl apply -f mongodb-service.yaml
     ```
 
