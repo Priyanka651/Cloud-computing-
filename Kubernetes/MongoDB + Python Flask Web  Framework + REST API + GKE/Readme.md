@@ -156,7 +156,7 @@ async function run() {
 run().catch(console.dir);
 
 ```
-## Step 2: Modify StudentServer to Fetch Records from MongoDB and Deploy to GKE ###
+## Step 2: Modify StudentServer to Fetch Records from MongoDB and Deploy to GKE ##
 
 1. **Create `studentServer.js`:**
 
@@ -201,6 +201,7 @@ const server = http.createServer(async (req, res) => {
     }
   } 
 
+```
 
 2. **Create `Dockerfile`:**
 FROM node:14
@@ -228,6 +229,7 @@ ENTRYPOINT ["node", "studentServer.js"]
 }
 
 ```
+
 ## Step 4: Build Docker Image ##
 
 To build the Docker image for your `studentserver`, run the following command:
