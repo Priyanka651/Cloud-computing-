@@ -83,13 +83,13 @@ spec:
     ```bash
     kubectl apply -f mongodb-deployment.yaml
 
-**Check Deployment Status:**
+4. **Check Deployment Status:**
     ```bash
     kubectl get pods
 
  Ensure the pod status is `Running`.
 
- **Create MongoDB Service:**
+5. **Create MongoDB Service:**
     Apply the `mongodb-service.yaml` configuration:
     apiVersion: v1
 kind: Service
@@ -102,5 +102,12 @@ spec:
     targetPort: 27017
   selector:
     app: mongodb
+
+6. **Verify Service Status:**
+    kubectl get svc
+Wait for the `EXTERNAL-IP` to be assigned.
+
+7. **Test MongoDB Connection:**
+ kubectl exec -it mongodb-deployment-replace-with-your-pod-name -- bash
 
 
