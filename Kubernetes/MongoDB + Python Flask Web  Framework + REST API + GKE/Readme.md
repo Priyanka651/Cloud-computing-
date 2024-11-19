@@ -486,13 +486,12 @@ kubectl get ingress
     curl http://<INGRESS-IP>/student/api/score?student_id=11111
   
 3. **Test Flask Application:**
-    ```
 curl http://<INGRESS-IP>/books
 
 4. **Add a New Book:**
     ```bash
     curl -X POST http://<INGRESS-IP>/book -H "Content-Type: application/json" -d '{"book_name": "New Book", "book_author": "Author Name", "isbn": "123456"}'
-```
+
 
 
 
