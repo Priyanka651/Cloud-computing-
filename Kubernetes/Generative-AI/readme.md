@@ -48,6 +48,7 @@ Add the following content to the .env file, replacing your-api-key with your act
 
 plaintext
 Copy code
+```bash
 #----------------------------------------------------------------------------  
 # OpenAI  
 #----------------------------------------------------------------------------  
@@ -56,16 +57,20 @@ OPENAI_TOKEN=your-api-key # Replace with your OpenAI API key
 #----------------------------------------------------------------------------  
 # Pinecone  
 #----------------------------------------------------------------------------  
-PINECONE_TOKEN=your-api-key # Replace with your Pinecone API key  
-4. Build and Run the Application
+PINECONE_TOKEN=your-api-key # Replace with your Pinecone API key
+```
+## 4. Build and Run the Application
 Run the following command to build and start the application:
 
-bash
-Copy code
-docker compose up --build  
-5. Access the Services
+```bash
+
+docker compose up --build
+```
+## 5. Access the Services
 Video Transcription Service:
+```bash
 Open a browser and visit http://localhost:8503.
+```
 
 Input a YouTube video URL.
 Click Submit to transcribe the video using the Whisper model.
@@ -74,12 +79,13 @@ Access the chat service at http://localhost:8504.
 
 Interact with the transcribed video content by asking questions.
 Responses are generated using GPT and Pinecone.
-6. Stop the Application
+## 6. Stop the Application
 To stop the application, go back to the terminal where the app is running and press:
 
-bash
+```bash
 Copy code
-Ctrl + C  
+Ctrl + C
+```
 
 
 
