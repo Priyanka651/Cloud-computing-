@@ -86,6 +86,6 @@ To stop the application, go back to the terminal where the app is running and pr
 Copy code
 Ctrl + C
 ```
-
+ [Detialed Slides Presentation](https://docs.google.com/presentation/d/16tQntILdV4otuo4AcuOlhHg6LK3k7LdWna4nmSOsO0U/edit#slide=id.g31d719ee68a_0_95)
 
 
