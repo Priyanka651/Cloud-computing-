@@ -16,10 +16,12 @@ Before starting, ensure you have the following:
 ## Steps to Deploy  
 
 ### 1. Clone the Repository  
+
 Open your terminal and run the following command:  
 ```bash  
-git clone https://github.com/Davidnet/docker-genai.git  
-2. Obtain API Keys
+git clone https://github.com/Davidnet/docker-genai.git
+```
+## 2.Obtain API Keys
 OpenAI API Key:
 
 Go to OpenAI's API Dashboard.
@@ -30,17 +32,18 @@ Pinecone API Key:
 Search "Pinecone" in Google Cloud and click Subscribe.
 Sign up on the Pinecone website with your email.
 Go to the API Keys section and copy the key.
-3. Specify API Keys in the Environment File
+
+## 3. Specify API Keys in the Environment File
 Navigate to the project directory:
 
-bash
-Copy code
+```bash
+
 cd docker-genai  
 Create a .env file:
-
-bash
-Copy code
-vim .env  
+```
+```bash
+vim .env
+```
 Add the following content to the .env file, replacing your-api-key with your actual API keys:
 
 plaintext
