@@ -4,21 +4,21 @@ This project deploys a Streamlit-based video transcription and chat application 
 
 ## Prerequisites
 
-Before starting, ensure you have the following:
 
-OpenAI API Key: Obtainable from OpenAI's API Dashboard.
-Pinecone API Key: Obtainable from Pinecone Dashboard.
-Docker Desktop: Install the latest version from Docker's official site.
-GitHub Repository: Clone the required repository.
+Before starting, ensure you have the following:  
+- **OpenAI API Key**: Obtainable from [OpenAI's API Dashboard](https://platform.openai.com/).  
+- **Pinecone API Key**: Obtainable from [Pinecone Dashboard](https://www.pinecone.io/).  
+- **Docker Desktop**: Install the latest version from [Docker's official site](https://www.docker.com/products/docker-desktop).  
+- **GitHub Repository**: Clone the required repository.  
 
+---
 
-Steps to Deploy
-1. Clone the Repository
-Open your terminal and run the following command:
+## Steps to Deploy  
 
-bash
-Copy code
-$ git clone https://github.com/Davidnet/docker-genai.git  
+### 1. Clone the Repository  
+Open your terminal and run the following command:  
+```bash  
+git clone https://github.com/Davidnet/docker-genai.git  
 2. Obtain API Keys
 OpenAI API Key:
 
@@ -35,12 +35,12 @@ Navigate to the project directory:
 
 bash
 Copy code
-$ cd docker-genai  
+cd docker-genai  
 Create a .env file:
 
 bash
 Copy code
-$ vim .env  
+vim .env  
 Add the following content to the .env file, replacing your-api-key with your actual API keys:
 
 plaintext
@@ -59,7 +59,7 @@ Run the following command to build and start the application:
 
 bash
 Copy code
-$ docker compose up --build  
+docker compose up --build  
 5. Access the Services
 Video Transcription Service:
 Open a browser and visit http://localhost:8503.
@@ -77,15 +77,6 @@ To stop the application, go back to the terminal where the app is running and pr
 bash
 Copy code
 Ctrl + C  
-Key Features
-Video Transcription: Processes YouTube videos and extracts transcripts using Whisper.
-Chat Interaction: Enables users to query transcripts using GPT-powered responses.
-Containerization: The entire application is containerized for consistent deployment and scaling.
-Additional Notes
-Ensure Docker Desktop is running before executing the commands.
-Use secure storage for your API keys and avoid sharing the .env file.
-For troubleshooting, check the Docker logs using:
-bash
-Copy code
-$ docker compose logs  
+
+
 
